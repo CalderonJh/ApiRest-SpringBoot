@@ -1,0 +1,2 @@
+insert into profesores2 (id_profesor, nombre, apellido, email, cedula, escuela, telefono, id_direccion)
+select id_profesor, nombre, apellido, email, cedula, escuela, telefono, id_direccion from profesores;

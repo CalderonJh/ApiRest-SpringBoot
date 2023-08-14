@@ -1,0 +1,1 @@
+drop table universidad_api.profesores;

@@ -1,0 +1,1 @@
+alter table profesores add column apellido varchar(25) not null;
