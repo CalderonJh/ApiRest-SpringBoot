@@ -1,1 +1,0 @@
-rename table universidad_api.profesores2 to profesores;

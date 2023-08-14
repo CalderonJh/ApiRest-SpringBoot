@@ -7,13 +7,11 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.math.BigInteger;
 
 @Entity(name = "Profesor")
 @Table(name = "profesores")
@@ -28,17 +26,25 @@ public class Profesor {
     private Long id;
 
     @NotBlank
-    private String nombre;
+    @Column(name = "primer_nombre")
+    private String primerNombre;
+
+    @Column(name = "segundo_nombre")
+    private String segundoNombre;
 
     @NotBlank
-    private String apellido;
+    @Column(name = "primer_apellido")
+    private String primerApellido;
+
+    @Column(name = "segundo_apellido")
+    private String segundoApellido;
 
     @NotBlank
     @Email
     private String email;
 
     @NotNull
-    private Integer cedula;
+    private Integer documento;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -46,7 +52,6 @@ public class Profesor {
 
     @NotBlank
     private String telefono;
-
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_direccion")
