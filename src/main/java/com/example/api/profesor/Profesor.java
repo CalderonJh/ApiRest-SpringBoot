@@ -12,6 +12,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigInteger;
+
 
 @Entity(name = "Profesor")
 @Table(name = "profesores")
@@ -44,7 +46,7 @@ public class Profesor {
     private String email;
 
     @NotNull
-    private Integer documento;
+    private BigInteger documento;
 
     @NotNull
     @Enumerated(EnumType.STRING)
