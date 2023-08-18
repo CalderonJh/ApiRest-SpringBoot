@@ -1,18 +1,13 @@
 package com.example.api.controller;
 
-import com.example.api.profesor.DatosRegistroProfesor;
-import com.example.api.profesor.ProfesorDTO;
-import com.example.api.profesor.ProfesorRepository;
-import com.example.api.profesor.Profesor;
+import com.example.api.profesor.*;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/profesor")
@@ -27,15 +22,30 @@ public class ProfesorController {
     @PostMapping
     public ResponseEntity<String> registrarProfesor(@RequestBody @Valid Profesor profesor){
         profesorRepository.save(profesor);
-        return ResponseEntity.ok("Successful professor creation c:");
+        return ResponseEntity.ok("Successful professor registration c:");
     }
+
     @GetMapping
-    public Page<ProfesorDTO> listar(@PageableDefault(size = 2) Pageable pageable){
-        return profesorRepository.findAll(pageable).map(ProfesorDTO::new);
+    public Page<ProfesorDTO> listar(@PageableDefault Pageable pageable){
+        return profesorRepository.findByActivoTrue(pageable).map(ProfesorDTO::new);
     }
 
-    public void sum(int i){
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<String> actualizarProfesor(@PathVariable("id") Long id,
+                                                     @RequestBody ProfesorPUT profesorPUT) {
+        Profesor profesor = profesorRepository.getReferenceById(id);
+        profesor.actualizar(profesorPUT);
 
+        return ResponseEntity.ok("Professor data updated c:");
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<String> eliminarProfesor(@PathVariable Long id){
+        Profesor profesor = profesorRepository.getReferenceById(id);
+        profesor.desactivarProfesor();
+        return ResponseEntity.ok("Professor removed :c");
     }
 
 }
