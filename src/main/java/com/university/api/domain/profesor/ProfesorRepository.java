@@ -1,4 +1,4 @@
-package com.example.api.profesor;
+package com.university.api.domain.profesor;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

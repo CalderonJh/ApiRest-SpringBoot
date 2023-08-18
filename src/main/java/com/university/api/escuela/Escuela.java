@@ -1,4 +1,4 @@
-package com.example.api.escuela;
+package com.university.api.escuela;
 
 public enum Escuela {
     INGENIERIA, CIENCIAS, IDIOMAS, SALUD
