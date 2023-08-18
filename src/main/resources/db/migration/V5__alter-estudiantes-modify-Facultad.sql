@@ -1,0 +1,1 @@
+alter table universidad_api.estudiantes rename column Facultad to escuela;
