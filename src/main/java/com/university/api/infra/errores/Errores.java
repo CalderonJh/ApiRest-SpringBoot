@@ -3,7 +3,6 @@ package com.university.api.infra.errores;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -28,7 +27,7 @@ public class Errores {
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<ErrorResponse> error409(DataIntegrityViolationException e){
+    public ResponseEntity<ErrorResponse> error409(){
         return ResponseEntity.status(HttpStatus.CONFLICT).body(
                 new ErrorResponse("Conflicto de datos", "Datos duplicados"));
     }
