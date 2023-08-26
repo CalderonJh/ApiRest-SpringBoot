@@ -53,6 +53,7 @@ public class ProfesorController {
                                                                @RequestBody ProfesorPUT profesorPUT) {
         Profesor profesor = profesorRepository.getReferenceById(id);
         profesor.actualizar(profesorPUT);
+        profesor.actualizar(profesorPUT);
 
         return ResponseEntity.ok(new ProfesorResponse(profesor));
     }
