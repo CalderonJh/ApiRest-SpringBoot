@@ -23,7 +23,7 @@ public class Usuario implements UserDetails  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
-    private String clave;
+    private String password;
 
     @Override
     public boolean equals(Object o) {
@@ -45,7 +45,7 @@ public class Usuario implements UserDetails  {
 
     @Override
     public String getPassword() {
-        return this.clave;
+        return this.password;
     }
 
     @Override
