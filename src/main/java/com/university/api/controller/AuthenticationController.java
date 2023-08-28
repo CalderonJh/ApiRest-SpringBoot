@@ -29,13 +29,13 @@ public class AuthenticationController {
 
 
     @PostMapping
-    public ResponseEntity<JwtTokenDato> login(@RequestBody @Valid UserAuthentication u){
+    public ResponseEntity<JwtTokenDato> tryLogin(@RequestBody @Valid UserAuthentication u){
 //        Authentication authentication = new UsernamePasswordAuthenticationToken(u.username(), u.password());
-
+        System.out.println("try login");
         var authorizedUser =  authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(u.username(), u.password()));
         var token = tokenService.generateToken((Usuario) authorizedUser.getPrincipal());
-
+        System.out.println(token);
         return ResponseEntity.ok(new JwtTokenDato(token));
     }
 }

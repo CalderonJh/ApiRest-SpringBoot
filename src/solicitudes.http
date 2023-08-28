@@ -1,0 +1,6 @@
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{"name":  "jhonc",
+"password": "jhon123"}
+> Authorization: Bearer {{eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqaG9uYyIsImlzcyI6ImF1dGgwIiwiaWQiOjEsImV4cCI6MTY5MzI1OTY0Mn0.sWdvhSRJz04vuhah9YyA_hSIUadQu5VPEv4uRJaPw0Aa}}
