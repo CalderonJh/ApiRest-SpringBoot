@@ -10,4 +10,6 @@ Herramientas utilizadas:
   Spring boot
 
   Lombok
+
+  El proyecto el backend de una aplicacion web de registro de estudiantes y profesores de una universidad (en su forma elemental)
   
