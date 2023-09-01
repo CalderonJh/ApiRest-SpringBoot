@@ -11,5 +11,5 @@ Herramientas utilizadas:
 
   Lombok
 
-  El proyecto el backend de una aplicacion web de registro de estudiantes y profesores de una universidad (en su forma elemental)
+Esta app funciona como el backend de una aplicacion web de registro de estudiantes y profesores de una universidad (en su forma elemental), permitiendo guardar estos registros en una base de datos asi como modificar algunos campos
   
