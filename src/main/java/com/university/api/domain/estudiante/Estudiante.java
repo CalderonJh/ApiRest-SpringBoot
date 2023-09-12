@@ -105,8 +105,8 @@ public class Estudiante {
 
     public void verify() {
         if (this.segundoNombre == null) return;
-        if (this.segundoApellido == null) return;
         if (this.segundoNombre.isBlank()) this.segundoNombre = null;
+        if (this.segundoApellido == null) return;
         if (this.segundoApellido.isBlank()) this.segundoApellido = null;
     }
 
