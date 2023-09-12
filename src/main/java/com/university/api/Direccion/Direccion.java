@@ -1,4 +1,4 @@
-package com.university.api.Direccion;
+package com.university.api.address;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -15,14 +15,15 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity(name = "Direccion")
 @Table(name = "direcciones")
-public class Direccion {
+public class Address {
     @Id
     @Column(name = "id_direccion")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    private String carrera;
+    @Column(name = "carrera")
+    private String street;
 
     @NotBlank
     private String calle;
@@ -41,7 +42,7 @@ public class Direccion {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Direccion direccion = (Direccion) o;
+        Address direccion = (Address) o;
         return getId() != null && Objects.equals(getId(), direccion.getId());
     }
 

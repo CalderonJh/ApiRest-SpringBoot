@@ -1,7 +1,8 @@
 package com.university.api.domain.profesor;
 
-import com.university.api.direccion.Direccion;
-import com.university.api.escuela.Escuela;
+import com.university.api.Direccion.Direccion;
+import com.university.api.domain.profesor.dto.ProfesorPut;
+import com.university.api.facultad.Escuela;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -63,7 +64,7 @@ public class Profesor {
     @Column(name = "activo")
     private Boolean activo = true;
 
-    public void actualizar(ProfesorPUT profesorPUT) {
+    public void actualizar(ProfesorPut profesorPUT) {
         if (profesorPUT.primerNombre() != null)
             this.primerNombre = profesorPUT.primerNombre();
         if (profesorPUT.segundoNombre() != null)

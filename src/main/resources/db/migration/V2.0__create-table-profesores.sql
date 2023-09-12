@@ -6,10 +6,12 @@ create table profesores
     primer_apellido  varchar(20) not null,
     segundo_apellido varchar(20),
     email            varchar(25) not null unique,
-    documento        int         not null unique,
-    escuela          varchar(25),
-    telefono         varchar(15),
+    documento        bigint         not null unique,
+    facultad varchar(50) not null,
+    escuela          varchar(50),
+    telefono         varchar(25),
     id_direccion     int,
+    activo           bool default true,
     primary key (id_profesor),
     foreign key (id_direccion) references universidad_api.direcciones (id_direccion)
 )

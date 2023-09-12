@@ -1,8 +1,8 @@
 package com.university.api.domain.estudiante;
 
-import com.university.api.direccion.Direccion;
-import com.university.api.escuela.Escuela;
-import com.university.api.escuela.ProgramaAcademico;
+import com.university.api.Direccion.Direccion;
+import com.university.api.domain.estudiante.dto.EstudiantePut;
+import com.university.api.facultad.*;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -11,12 +11,14 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.math.BigInteger;
 import java.util.Objects;
 
 
+@Setter
 @Entity(name = "Estudiante")
 @Table(name = "estudiantes")
 @Getter
@@ -49,6 +51,12 @@ public class Estudiante {
     @NotNull
     private BigInteger documento;
 
+    private BigInteger codigo;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Facultad facultad;
+
     @NotNull
     @Enumerated(EnumType.STRING)
     private Escuela escuela;
@@ -67,10 +75,10 @@ public class Estudiante {
     private Direccion direccion;
 
     @Column(name = "activo")
-    private boolean activo = true;
+    private Boolean activo = true;
 
 
-    public void actualizar(EstudiantePUT estudiantePUT) {
+    public void actualizar(EstudiantePut estudiantePUT) {
         if (estudiantePUT.primerNombre() != null)
             this.primerNombre = estudiantePUT.primerNombre();
         if (estudiantePUT.segundoNombre() != null)
@@ -86,6 +94,12 @@ public class Estudiante {
 
     public void desactivar() {
         this.activo = false;
+    }
+
+
+    public void verify() {
+        if (this.segundoNombre.isBlank()) this.segundoNombre = null;
+        if (this.segundoApellido.isBlank()) this.segundoApellido = null;
     }
 
     @Override
@@ -105,4 +119,6 @@ public class Estudiante {
                 .getHibernateLazyInitializer().getPersistentClass()
                 .hashCode() : getClass().hashCode();
     }
+
+
 }

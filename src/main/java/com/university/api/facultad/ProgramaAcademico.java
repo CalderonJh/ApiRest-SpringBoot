@@ -1,4 +1,4 @@
-package com.university.api.escuela;
+package com.university.api.facultad;
 
 public enum ProgramaAcademico {
     INGENIERIA_DE_SISTEMAS,

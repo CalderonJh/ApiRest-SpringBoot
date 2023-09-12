@@ -1,6 +1,10 @@
 package com.university.api.controller;
 
-import com.university.api.domain.profesor.*;
+import com.university.api.domain.profesor.Profesor;
+import com.university.api.domain.profesor.ProfesorRepository;
+import com.university.api.domain.profesor.dto.ProfesorGet;
+import com.university.api.domain.profesor.dto.ProfesorPut;
+import com.university.api.domain.profesor.dto.ProfesorResponse;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,22 +39,22 @@ public class ProfesorController {
 
 
     @GetMapping
-    public ResponseEntity<Page<ProfesorGET>> listar(@PageableDefault Pageable pageable){
-        return ResponseEntity.ok(profesorRepository.findByActivoTrue(pageable).map(ProfesorGET::new));
+    public ResponseEntity<Page<ProfesorGet>> listar(@PageableDefault Pageable pageable){
+        return ResponseEntity.ok(profesorRepository.findByActivoTrue(pageable).map(ProfesorGet::new));
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProfesorResponse> getProfesor(@PathVariable("id") Long id){
+    public ResponseEntity<ProfesorGet> getProfesor(@PathVariable("id") Long id){
         var profesor = profesorRepository.getReferenceById(id);
-        return ResponseEntity.ok(new ProfesorResponse(profesor));
+        return ResponseEntity.ok(new ProfesorGet(profesor));
     }
 
 
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<ProfesorResponse> actualizarProfesor(@PathVariable("id") Long id,
-                                                               @RequestBody ProfesorPUT profesorPUT) {
+                                                               @RequestBody ProfesorPut profesorPUT) {
         Profesor profesor = profesorRepository.getReferenceById(id);
         profesor.actualizar(profesorPUT);
         profesor.actualizar(profesorPUT);

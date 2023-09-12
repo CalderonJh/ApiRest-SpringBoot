@@ -1,7 +1,8 @@
-package com.university.api.domain.estudiante;
+package com.university.api.domain.estudiante.dto;
 
-public record EstudianteGET(Long id,
-                            String primerNombre,
+import com.university.api.domain.estudiante.Estudiante;
+
+public record EstudianteGet(String primerNombre,
                             String segundoNombre,
                             String primerApellido,
                             String segundoApellido,
@@ -9,9 +10,8 @@ public record EstudianteGET(Long id,
                             String programaAcademico,
                             String email) {
 
-    public EstudianteGET(Estudiante estudiante) {
-        this(estudiante.getId(),
-                estudiante.getPrimerNombre(),
+    public EstudianteGet(Estudiante estudiante) {
+        this(estudiante.getPrimerNombre(),
                 estudiante.getSegundoNombre(),
                 estudiante.getPrimerApellido(),
                 estudiante.getSegundoApellido(),

@@ -1,4 +1,4 @@
-package com.university.api.domain.usuarios;
+package com.university.api.domain.usuarios.admin;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,13 +12,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *La clase Admin representa un tipo de usuario administrador, el cual podrá crear y eliminar registros
+ * de profesores y estudiantes y crear grupos de estudiantes asignados a un profesor
+ */
 @Table(name="usuarios")
 @Entity(name = "Usuario")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Usuario implements UserDetails  {
+public class Admin implements UserDetails  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,7 +32,7 @@ public class Usuario implements UserDetails  {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
+        Admin usuario = (Admin) o;
         return Objects.equals(id, usuario.id);
     }
 

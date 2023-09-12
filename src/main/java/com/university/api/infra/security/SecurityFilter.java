@@ -1,6 +1,6 @@
 package com.university.api.infra.security;
 
-import com.university.api.domain.usuarios.UsuarioRepository;
+import com.university.api.domain.usuarios.admin.AdminRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,12 +21,16 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     private final TokenService tokenService;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    private final AdminRepository usuarioRepository;
 
-    public SecurityFilter(TokenService tokenService) {
+
+    @Autowired
+    public SecurityFilter(TokenService tokenService, AdminRepository usuarioRepository) {
         this.tokenService = tokenService;
+        this.usuarioRepository = usuarioRepository;
+
     }
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -37,6 +41,7 @@ public class SecurityFilter extends OncePerRequestFilter {
         if(authHeader != null){
             var token = authHeader.replace("Bearer ", "");
             var subject_name = tokenService.getSubject(token);
+            System.out.println(subject_name + " is working!!");
             if (subject_name != null){
                 var usuario = usuarioRepository.findByUsername(subject_name);
                 var authentication = new UsernamePasswordAuthenticationToken(usuario,
@@ -45,7 +50,7 @@ public class SecurityFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }else {
-            System.out.print("\u001B[31m" + "Token is null");
+            System.out.print("\033[31m" + "No se ha declarado un token!\n" + "\u001B[0m");
         }
         filterChain.doFilter(request, response);
 
