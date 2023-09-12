@@ -54,7 +54,7 @@ public class MateriaController {
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<MateriaResponse> edit(@PathVariable("id") Long id,
-                                                MateriaPut materiaPut){
+                                                @RequestBody MateriaPut materiaPut){
         var materia = materiaRepository.getReferenceById(id);
         materia.actualizar(materiaPut);
         return ResponseEntity.ok(new MateriaResponse(materia));
