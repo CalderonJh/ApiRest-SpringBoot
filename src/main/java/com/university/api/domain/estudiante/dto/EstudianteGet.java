@@ -11,12 +11,14 @@ public record EstudianteGet(String primerNombre,
                             String email) {
 
     public EstudianteGet(Estudiante estudiante) {
-        this(estudiante.getPrimerNombre(),
+        this(
+                estudiante.getPrimerNombre(),
                 estudiante.getSegundoNombre(),
                 estudiante.getPrimerApellido(),
                 estudiante.getSegundoApellido(),
                 estudiante.getEscuela().toString(),
                 estudiante.getProgramaAcademico().toString(),
-                estudiante.getEmail());
+                estudiante.getEmail()
+        );
     }
 }

@@ -10,4 +10,5 @@ public interface ProfesorRepository
         extends JpaRepository<Profesor, Long> {
 
     Page<Profesor> findByActivoTrue(Pageable pageable);
+
 }

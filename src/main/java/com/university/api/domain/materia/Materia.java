@@ -4,9 +4,7 @@ import com.university.api.domain.materia.dto.MateriaPut;
 import com.university.api.facultad.Escuela;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Objects;
 
@@ -34,7 +32,6 @@ public class Materia {
 
     public void actualizar(MateriaPut materiaPut) {
         if(materiaPut.nombre() != null){
-            System.out.println(materiaPut.nombre());
             this.nombre = materiaPut.nombre();
         }if(materiaPut.codigo() != null){
             this.codigo = materiaPut.codigo();

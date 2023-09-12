@@ -1,5 +1,6 @@
 package com.university.api.domain.estudiante;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.university.api.Direccion.Direccion;
 import com.university.api.domain.estudiante.dto.EstudiantePut;
 import com.university.api.facultad.*;
@@ -32,16 +33,20 @@ public class Estudiante {
 
     @NotBlank
     @Column(name = "primer_nombre")
+    @JsonAlias("primer_nombre")
     private String primerNombre;
 
     @Column(name = "segundo_nombre")
+    @JsonAlias("segundo_nombre")
     private String segundoNombre;
 
     @NotBlank
     @Column(name = "primer_apellido")
+    @JsonAlias("primer_apellido")
     private String primerApellido;
 
     @Column(name = "segundo_apellido")
+    @JsonAlias("segundo_apellido")
     private String segundoApellido;
 
     @NotBlank
@@ -64,6 +69,7 @@ public class Estudiante {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "programa_academico")
+    @JsonAlias("programa_academico")
     private ProgramaAcademico programaAcademico;
 
     @NotBlank
@@ -98,6 +104,8 @@ public class Estudiante {
 
 
     public void verify() {
+        if (this.segundoNombre == null) return;
+        if (this.segundoApellido == null) return;
         if (this.segundoNombre.isBlank()) this.segundoNombre = null;
         if (this.segundoApellido.isBlank()) this.segundoApellido = null;
     }
@@ -106,8 +114,13 @@ public class Estudiante {
     public final boolean equals(Object o) {
         if (this == o) return true;
         if (o == null) return false;
-        Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
-        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
+
+        Class<?> oEffectiveClass = o instanceof HibernateProxy ? (
+                (HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
+
+        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? (
+                (HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
+
         if (thisEffectiveClass != oEffectiveClass) return false;
         Estudiante that = (Estudiante) o;
         return getId() != null && Objects.equals(getId(), that.getId());

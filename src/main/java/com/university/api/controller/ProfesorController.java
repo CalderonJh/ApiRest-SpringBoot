@@ -1,15 +1,11 @@
 package com.university.api.controller;
 
-import com.university.api.domain.profesor.Profesor;
-import com.university.api.domain.profesor.ProfesorRepository;
-import com.university.api.domain.profesor.dto.ProfesorGet;
-import com.university.api.domain.profesor.dto.ProfesorPut;
-import com.university.api.domain.profesor.dto.ProfesorResponse;
+import com.university.api.domain.profesor.*;
+import com.university.api.domain.profesor.dto.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

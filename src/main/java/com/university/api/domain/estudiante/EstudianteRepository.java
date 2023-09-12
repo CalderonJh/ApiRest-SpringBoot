@@ -13,11 +13,13 @@ public interface EstudianteRepository
 
     Page<Estudiante> findByActivoTrue(Pageable pageable);
 
-    @Query("SELECT e.codigo " +
-            "FROM Estudiante e " +
-            "WHERE CAST(e.codigo AS string) LIKE CONCAT(:prefix, '%') " +  // Corrección aquí
-            "ORDER BY e.codigo DESC " +
-            "LIMIT 1")
+    @Query("""
+            SELECT e.codigo
+            FROM Estudiante e
+            WHERE CAST(e.codigo AS string) LIKE CONCAT(:prefix, '%')
+            ORDER BY e.codigo DESC
+            LIMIT 1
+            """)
     BigInteger findLatestCodeByPrefix(@Param("prefix") String prefix) throws TypeNotPresentException;
 
 }

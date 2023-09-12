@@ -21,7 +21,8 @@ public class EstudianteController {
     private final Services services;
 
     @Autowired
-    public EstudianteController(EstudianteRepository estudianteRepository, Services services) {
+    public EstudianteController(EstudianteRepository estudianteRepository,
+                                Services services) {
         this.estudianteRepository = estudianteRepository;
         this.services = services;
     }
@@ -60,7 +61,8 @@ public class EstudianteController {
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<EstudianteResponse> actualizarEstudiante(@PathVariable Long id,
-                                                                   @RequestBody @Valid EstudiantePut estudiantePUT) {
+                                                                   @RequestBody
+                                                                   @Valid EstudiantePut estudiantePUT) {
         var estudiante = estudianteRepository.getReferenceById(id);
         estudiante.actualizar(estudiantePUT);
         return ResponseEntity.ok(new EstudianteResponse(estudiante));

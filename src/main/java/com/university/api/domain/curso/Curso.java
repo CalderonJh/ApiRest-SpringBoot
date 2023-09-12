@@ -4,9 +4,7 @@ import com.university.api.domain.estudiante.Estudiante;
 import com.university.api.domain.materia.Materia;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 import java.util.Objects;

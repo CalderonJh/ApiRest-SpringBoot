@@ -1,15 +1,11 @@
 package com.university.api.controller;
 
-import com.university.api.domain.materia.Materia;
-import com.university.api.domain.materia.MateriaRepository;
-import com.university.api.domain.materia.dto.MateriaGet;
-import com.university.api.domain.materia.dto.MateriaPut;
-import com.university.api.domain.materia.dto.MateriaResponse;
+import com.university.api.domain.materia.*;
+import com.university.api.domain.materia.dto.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
