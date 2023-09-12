@@ -53,7 +53,7 @@ public class MateriaController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<MateriaResponse> edit(@PathVariable(name = "id") Long id,
+    public ResponseEntity<MateriaResponse> edit(@PathVariable("id") Long id,
                                                 MateriaPut materiaPut){
         var materia = materiaRepository.getReferenceById(id);
         materia.actualizar(materiaPut);
@@ -62,7 +62,7 @@ public class MateriaController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<String> eliminarMateria(@PathVariable(name = "id") Long id){
+    public ResponseEntity<String> eliminarMateria(@PathVariable("id") Long id){
         materiaRepository.delete(materiaRepository.getReferenceById(id));
         return ResponseEntity.ok("Materia eliminada con éxito");
     }

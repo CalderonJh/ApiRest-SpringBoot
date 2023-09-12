@@ -31,8 +31,10 @@ public class Materia {
     @Enumerated(EnumType.STRING)
     private Escuela escuela;
 
+
     public void actualizar(MateriaPut materiaPut) {
         if(materiaPut.nombre() != null){
+            System.out.println(materiaPut.nombre());
             this.nombre = materiaPut.nombre();
         }if(materiaPut.codigo() != null){
             this.codigo = materiaPut.codigo();
