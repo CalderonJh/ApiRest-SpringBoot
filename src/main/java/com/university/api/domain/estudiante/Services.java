@@ -39,12 +39,7 @@ public class Services {
     private String generatePrefix() {
         var date = LocalDate.now();
         var year = date.getYear() % 100;
-        int month = date.getMonthValue();
-        if (month >= 8 || month <= 4) {
-            month = 1;
-        } else {
-            month = 2;
-        }
+        int month = date.getMonthValue()>=8 ? 1 : 2;
         return String.valueOf(year).concat(String.valueOf(month));
     }
 }
